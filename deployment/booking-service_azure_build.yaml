@@ -1,0 +1,26 @@
+trigger:
+  branches:
+    include:
+      - main
+      - develop
+      - feature/*
+
+stages:
+  - stage: CI
+    jobs:
+      - job: build
+        displayName: 'Build and Package'
+        pool:
+          vmImage: 'ubuntu-latest'
+        steps:
+          - task: Gradle@3
+            displayName: 'Build and Test'
+            inputs:
+              gradleWrapperFile: 'gradlew'
+              tasks: 'clean build'
+
+          - task: PublishBuildArtifacts@1
+            displayName: 'Publish Artifact'
+            inputs:
+              PathtoPublish: '$(System.DefaultWorkingDirectory)/build/libs/'
+              ArtifactName: 'drop'
