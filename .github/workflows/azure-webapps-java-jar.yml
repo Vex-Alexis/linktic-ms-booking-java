@@ -90,4 +90,4 @@ jobs:
           app-name: ${{ env.AZURE_WEBAPP_NAME }}
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
           #package: 'build/libs/booking-service.jar'
-          package: '${{ github.workspace }}/booking-service.jar'
+          package: '${{ github.workspace }}/build/libs/booking-service.jar'
