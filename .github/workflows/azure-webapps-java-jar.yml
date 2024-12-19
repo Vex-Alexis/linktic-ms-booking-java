@@ -53,6 +53,9 @@ jobs:
         #run: ./gradlew clean build
         run: ./gradlew clean build -x test
 
+      - name: List files in build/libs (Build Job)
+        run: ls -al build/libs/
+
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
         with:
@@ -73,6 +76,9 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: java-app
+
+      - name: List files after downloading artifact
+        run: ls -al ${{ github.workspace }}
 
       - name: List files in build/libs
         run: ls -al build/libs/
