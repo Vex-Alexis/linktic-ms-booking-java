@@ -62,6 +62,10 @@ jobs:
           name: java-app
           path: '${{ github.workspace }}/build/libs/*.jar'
 
+      - name: List files after Upload artifact
+        run: ls -al ${{ github.workspace }}
+        
+
   deploy:
     permissions:
       contents: none
