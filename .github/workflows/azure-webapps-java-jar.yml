@@ -74,10 +74,13 @@ jobs:
         with:
           name: java-app
 
+      - name: List files in build/libs
+        run: ls -al build/libs/
+
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
           app-name: ${{ env.AZURE_WEBAPP_NAME }}
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-          package: 'build/libs/*.jar'
+          package: 'build/libs/booking-service.jar'
