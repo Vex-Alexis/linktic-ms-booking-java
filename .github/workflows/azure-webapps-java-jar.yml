@@ -64,6 +64,9 @@ jobs:
 
       - name: List files after Upload artifact
         run: ls -al ${{ github.workspace }}
+
+      - name: List files after Upload artifact
+        run: ls -al '${{ github.workspace }}/build/libs/'
         
 
   deploy:
