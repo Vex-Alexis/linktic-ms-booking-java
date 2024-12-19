@@ -80,8 +80,8 @@ jobs:
       - name: List files after downloading artifact
         run: ls -al ${{ github.workspace }}
 
-      - name: List files in build/libs
-        run: ls -al build/libs/
+      #- name: List files in build/libs
+        #run: ls -al build/libs/
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
