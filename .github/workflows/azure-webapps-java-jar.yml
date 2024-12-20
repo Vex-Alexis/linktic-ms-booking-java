@@ -56,11 +56,14 @@ jobs:
       - name: List files in build/libs (Build Job)
         run: ls -al build/libs/
 
+      - name: List files in aplications/build/libs (Build Job)
+        run: ls -al applications/app-service/build/libs/
+
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
         with:
           name: java-app
-          path: '${{ github.workspace }}/build/libs/*.jar'
+          path: 'applications/app-service/build/libs/*.jar'
 
       - name: List files after Upload artifact
         run: ls -al ${{ github.workspace }}
@@ -100,4 +103,5 @@ jobs:
           app-name: ${{ env.AZURE_WEBAPP_NAME }}
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
           #package: 'build/libs/booking-service.jar'
-          package: '${{ github.workspace }}/*.jar'
+          #package: '${{ github.workspace }}/*.jar'
+          package: 'applications/app-service/build/libs/booking-service.jar'
